@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crtl-P to print</title>
+        <link rel="stylesheet" href="RMInvPrt.css">
+        
+    </head>
+    
+    <style type="text/css" media="print">
+        @page {size: portrait};
+
+    </style>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nominal Size</th>
+                    <th>Grade</th>
+                    <th>Width</th>
+                    <th>Depth</th>
+                    <th>Length</th>
+                    <th>Qty in Stock</th>
+                    <th>Qty on Order</th>
+                    <th>ID</th>
+                    <th>Cost Each</th>
+                    
+                </tr>
+            </thead>
+            
+            <tbody id="prtTableBody">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </body>
+    <script src="RMInvPrt.js"></script>
+
+</html>
+
+

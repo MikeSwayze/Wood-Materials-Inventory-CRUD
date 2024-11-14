@@ -1,0 +1,361 @@
+
+*{
+    font-weight: 700    ;
+    padding:0;
+    margin:0;
+    pointer-events:all;
+    touch-action: all;
+    
+}
+
+.table {
+    padding: 2px;
+    padding-top: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    border-collapse:collapse;
+    width:700px;
+    height: 225px;
+    font-size: 14px;
+    text-align: center;
+    display:block;
+    overflow: auto;
+    scroll-behavior: auto;   
+}
+.table th{
+    background-color: lightgreen;
+    color:#1c0303;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    width:min-content;
+    overflow-wrap:normal;
+
+}
+.table td{
+    height:30px;
+    overflow:hidden;
+}
+.table th,
+.table td{
+    border: 1px solid #191717;
+    padding: 2px;
+    width:min-content;
+    overflow:hidden;
+}
+
+.button  {
+    width: 10ch;
+    height: 42px;
+    border: 2px solid #ffffff;
+    display: flex;
+    position: relative;
+    padding: 8px;
+    margin: 8px;
+    overflow-wrap: normal;
+    text-align: center;
+}
+.table tbody tr:nth-of-type(even) {
+    background-color: aqua;
+    
+}
+.table tbody tr:nth-of-type(odd) {
+    background-color: white;
+    
+}
+
+.table tbody tr:hover {
+    background-color: red;
+    
+}
+
+.table tbody tr[checked=true] {
+    background-color: lightblue;
+    
+}
+.CrudBtns {
+    height: 42px;
+    border-radius: 15%;
+    border:2px solid black;
+    padding:2px;
+    margin: 2px;
+    width:10ch;
+    overflow-wrap: normal;
+    text-align: center;
+}
+
+#inputform {
+    display:none;
+    position:fixed;
+    left:0;
+    top: 0;
+}
+#lastCard {
+    display:grid;
+    grid-template-columns: 25% 25% 25% 25% ;
+    overflow-x:wrap;
+    border:1px solid black;
+    background-color: burlywood;
+    padding-top:4px ;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+label {
+    border:1px solid black;
+    background-color: lightgrey;
+    text-align: center;
+    height: 40px;
+    width:12ch;
+}
+span {
+    display:flex;
+    flex-direction: row;
+    width:90%;
+
+}
+#csvBtns {
+    display:flex;
+    flex-direction: row;
+}
+
+.card-container {
+    position:fixed;
+    width:min-content;
+    height:2px;
+    display:flex;
+    flex-direction: row;
+    overflow-y:visible;
+    overflow-x:visible;
+    border:2px solid #ffffff;
+    padding:2px;
+    margin: 2px;
+    background-color:lightgoldenrodyellow;
+    color:rgba(8, 3, 27, 0.8);
+    left:0;
+    top:0;
+    
+    
+    
+}
+#usageCollector {
+    visibility: collapse;
+
+}
+.calculator {
+    position:relative;
+    width: 250px;
+    height:550px;
+    left:0;
+    top:0;
+}
+#calc {
+    display:flex;
+    width:fit-content;
+    height:fit-content;
+    top:2px;
+    left:2px;
+
+
+}
+
+#ID {
+    width: 10ch;
+    position:relative;
+    right:0;
+    top:0;
+    visibility: visible;
+    text-align: center;
+    padding-top: 1ch;
+    height: 30px;
+}
+.okButton{
+    position: relative;
+    left:0;
+    bottom:0;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(8, 3, 27, 0.8);
+    border: none;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    width:12ch;
+}
+.UsageCard , .NomSizeCard , .GradeCard , .fisWidthCard , .fisDepthCard , .fisLengthCard {
+    display:none;
+    flex-direction: column;
+    align-items: left ;
+    align-content: left;
+    width:12ch;
+    height:min-content;
+    width:min-content;
+    overflow-x:visible;
+    overflow-y:visible;
+    background-color: grey;
+    color:lightblue;
+    position: relative;
+    top:0;
+    left:0;
+    padding:4px;
+    margin:4px;
+    border:2px;
+    border-radius: 10px;
+    border-color: #ffffff;
+   
+    
+}
+#newUsage , #newNomSize , #newGrade , 
+    #newfisWidth , #newfisLength , #newfisDepth {
+    display:block;
+    visibility: collapse;
+    position: relative;
+    height: 18px;
+    width:60px;
+    bottom: 20px; 
+    left:12px;
+    }
+
+ol {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    position: relative;
+    padding:0;
+    margin:0;
+    width:20ch;
+    align-items:auto;
+}
+li {
+    align-items: center;
+    caret:unset ;
+    display:flex;
+    flex:auto;
+    width:15ch;
+    position: relative;
+    align-items:auto;
+    left: 0;
+    width:15ch;
+    padding:0;
+    margin:0;
+
+}
+li:checked  {
+    background-color: lightskyblue;
+    color: white;
+
+}
+li input[type=checkbox]:checked {
+    background-color: lightskyblue;
+}
+input[type="text"]{
+    width:11ch;
+    border:1px solid black;
+    position:relative;
+    padding:0;
+    margin:0;
+    overflow:word-wrap;
+    text-align: center;
+
+    height:40px;
+}
+#file {
+    width:20ch;
+}
+input[id="chkbox"]{
+
+    padding:2;
+    font-size: 30px;
+    position: relative;
+    left:0;
+    bottom:0;
+    cursor:pointer;
+
+}
+input[type="checkbox"]:checked  {
+
+    background-color: lightskyblue;
+    color: white;
+}
+li:hover{
+    background-color: lightblue;
+    color: white;
+}
+input:read-only {
+    background-color: white;
+    color: white;
+
+}
+.convertForm {
+    display:flex;
+    flex-direction: column;
+    height: auto;
+    width: fit-content;
+    visibility: hidden;
+}
+.radio_button {
+    display:flex;
+    visibility: hidden;
+    flex-direction: row;
+}
+.misc {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: min-content;
+}
+textarea {
+    display:none;
+    position: relative;
+    width:fit-content;
+}
+#qpUpdateForm {
+    
+    display: none ; /* flex */
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top:0;
+    align-items: center;
+    justify-items: center;
+    width: 200px;
+    visibility: visible;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(8, 3, 27, 0.8);
+    border:2px solid black;
+}
+#qpUpdateForm input[type="text"] {
+    width: 15ch;
+    height: 2ch;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid black;
+}
+#qpUpdateForm input[type="number"] {
+    width: 15ch;
+    height:2ch;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid black;
+}
+#qpuDescription {
+    width: fit-content;
+    height:6ch;
+    overflow-wrap:normal;
+    
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid black;
+}
+#qpUpdateForm #QPId {
+    width: 6ch;
+    height:2ch;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid black;
+}
+#LastQPId {
+    visibility: hidden;
+    visibility: collapse;
+}

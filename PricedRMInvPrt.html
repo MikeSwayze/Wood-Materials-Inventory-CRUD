@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crtl-P to print</title>
+        <link rel="stylesheet" href="PricedRMInvPrt.css">
+        
+    </head>
+    
+    <style type="text/css" media="print">
+        @page {size: portrait};
+
+    </style>
+    <body>
+        </body>
+        <div>
+             <br>
+                    <label for="Onhand">Value Onhand</label>
+                    <input type="text" id="Onhand" name="Onhand">
+                <br>
+                    <label for="OnOrder">Value OnOrder</label>
+                    <input type="text" id="OnOrder" name="OnOrder">
+                
+            </div>   <br>
+        <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="th" id="th" name="th">ID</th>
+                    <th class="th" id="th" name="th">Nominal Size</th>
+                    <th class="th" id="th" name="th">Grade</th>
+                    <th class="th" id="th" name="th">Width</th>
+                    <th class="th" id="th" name="th">Depth</th>
+                    <th class="th" id="th" name="th">Length</th>
+                    <th class="th" id="th" name="th">Cost Each</th>
+                    <th class="th" id="th" name="th">Qty in Stock</th>
+                    <th class="th" id="th" name="th">Cost in Stock</th>
+                    <th class="th" id="th" name="th">Qty on Order</th>
+                    <th class="th" id="th" name="th">Cost on Order</th>
+                </tr>
+            </thead>
+            
+            <tbody id="PricedPrtTableBody">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+        </table>
+        </div>
+
+    </body>
+    <script src="PricedRMInvPrt.js"></script>
+
+</html>
+
+

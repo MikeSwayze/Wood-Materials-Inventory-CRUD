@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fis-rpn Calculator</title>
+  <link rel="stylesheet" href="calc53.css"> </link>
+  <style>  </style>
+
+  </head>
+<body>
+<div>
+ <div class="convertForm" id="convertForm" name="convertForm">
+    <input type="text" id="my_convert" name="my_convert" placeholder="0" tabindex="-1" oninput=convert_entry()></input>
+    <input type="text" id="lastUnit" name="lastUnit" placeholder="" tabindex="-1"></input>
+    <input type="number" id="UnitExp_" name="UnitExp_" value=1 placeholder="1" tabindex="-1"></input>
+    <input type="text" id="OutNumU" name="OutNumU" value=0 placeholder="0" tabindex="-1"></input>
+    <input type="number" id="DecFt" name="DecFt" value=0 placeholder="0" tabindex="-1"></input>
+    <input type="number" id="DecIn" name="DecIn" value=0 placeholder="0" tabindex="-1"></input>
+    <input type="number" id="DecSx" name="DecSx" value=0 placeholder="0" tabindex="-1"></input>
+    <input type="number" id="DecMeter" name="DecMeter" value=0 placeholder="0" tabindex="-1"></input>
+    <input type="number" id="Dec_mm" name="Dec_mm"value=0 placeholder="0" tabindex="-1"></input>
+ </div >
+ <div class="fisForm" id="fisForm">
+   <div id="stack">   
+      <ol id="MyNumberList" tabindex="-1" ></ol> <!-- no white space children) -->                               
+    </div>
+    <div id="MyDisplay" class="MyDisplay">   
+      <input type="text" id="my_display" name="my_display" placeholder="0"tabindex="0" readonly=true oninput=convert_entry()></input> 
+    </div>
+  <div id="buttons" class="buttons">
+      <button id="ft" name="ft" tabindex="-1" value="ft" onclick=add_to_display(value)>ft</button>
+      <button id="in" name="in" tabindex="-1" value="in" onclick=add_to_display(value)>in</button>
+      <button id="sx" name="sx" tabindex="-1" value="sx" onclick=add_to_display(value)>sx</button>
+      <button id="m" name="m" tabindex="-1" value="m" onclick=add_to_display(value)>m</button>
+     
+      <button id="CE" name="ClearEntry"tabindex="-1" value="CE" onclick=add_to_display(value)>CE</button>
+      <button id="C" name="Clear" tabindex="-1" value="C" onclick=add_to_display(value)>C</button>
+      <button id="plus_Minus" name="+/-" tabindex="-1" value="+/-" onclick=add_to_display(value)>+/-</button>
+      <button id="enter" name="Enter" tabindex="-1" value="Enter" onclick=add_to_display(value)>Enter</button>
+
+      <button id="one" tabindex="-1" name="one" value="1" onclick=add_to_display(value)>1</button>
+      <button id="two" tabindex="-1"name="two" value="2" onclick=add_to_display(value)>2</button>
+      <button id="three" tabindex="-1"name="three" value="3" onclick=add_to_display(value)>3</button>
+      <button id="plus" tabindex="-1"name="plus" value="+" onclick=add_to_display(value)>+</button>
+
+      <button id="four" tabindex="-1"name="four" value="4" onclick=add_to_display(value)>4</button>
+      <button id="five" tabindex="-1"name="five" value="5" onclick=add_to_display(value)>5</button>
+      <button id="six" tabindex="-1"name="six" value="6" onclick=add_to_display(value)>6</button>
+      <button id="minus" tabindex="-1"name="minus" value="-" onclick=add_to_display(value)>-</button>
+
+      <button id="seven" name="seven"value="7" tabindex="-1" onclick=add_to_display(value)>7</button>
+      <button id="eight" tabindex="-1"name="eight" value="8" onclick=add_to_display(value)>8</button>
+      <button id="nine" tabindex="-1"name="nine" value="9" onclick=add_to_display(value)>9</button>
+      <button id="multiply" tabindex="-1"name="multiply" value="*" onclick=add_to_display(value)>*</button>
+
+      <button id="1/x" name="1/x" tabindex="-1" value="1/x" onclick=add_to_display(value)>1/x</button>
+      <button id="zero" tabindex="-1"name="zero" value="0" onclick=add_to_display(value)>0</button>
+      <button id="dot" tabindex="-1"name="dot" value="."  onclick=add_to_display(value)>.</button>
+
+      <button id="divide"   tabindex="-1"name="divide" value="/" onclick=add_to_display(value)>/</button>
+
+      <button id="y**x" name="y**x" tabindex="-1" value="y**x" onclick=add_to_display(value)>y**x</button>
+      <button id="x**2" name="x**2" tabindex="-1" value="x**2" onclick=add_to_display(value)>x**2</button>
+      <button id="sqrt" name="sqrt" tabindex="-1" value="sqrt" onclick=add_to_display(value)>sqrt</button>
+      <button id="LastX" name="LastX" tabindex="-1" value="LastX" onclick=add_to_display(value)>LastX</button>
+     
+      <button id="sin" name="sin" tabindex="-1" value="sin" onclick=add_to_display(value)>sin</button>
+      <button id="cos" name="cos" tabindex="-1" value="cos" onclick=add_to_display(value)>cos</button>
+      <button id="tan" name="tan" tabindex="-1" value="tan" onclick=add_to_display(value)>tan</button>
+      <label class="inv" for="inv">
+      <input type="checkbox" id="inv" name="inv"  tabindex="-1" > 
+       inv</label>
+       </div>
+    <div id="LastX2" name="LastX2" tabindex="-1" >
+      <input type="text" id="last_x" name="last_x" placeholder="0"tabindex="-1">  Last X</input>
+    </div>
+    <div id="div1" class="radio_button">
+      <input type="radio" id="fis" name="fis"  tabindex="-1" onclick="chk_units()" checked> 
+      <label for="fis">fis </label>
+      <input type="radio" id="mm" name="fis"  tabindex="-1" onclick="chk_units()">   
+      <label for="mm">mm</label>
+      <input type="radio" id="units" name="fis"  tabindex="-1"  onclick="chk_units()" > 
+      <label for="units">units</label>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="calc53.js"></script>
+
+</body>
