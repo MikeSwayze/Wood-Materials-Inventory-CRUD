@@ -1401,10 +1401,13 @@ async function tableRowSort() {
 };
 function tablePrint() {
   const PrtWdw=window.open("RMInvPrt.html","_blank","toolbar=no,location=yes,directories=yes,status=no,menubar=no,scrollbars=yes,resizable=no");
+  PrtWdw.location.href = "RMInvPrt.html";
   PrtWdw.print()
 };//"toolbar=yes, location=yes, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400"
 function ValTablePrint() {
   const ValPrtWdw=window.open("PricedRMInvPrt.html","_blank","toolbar=no,location=yes,directories=yes,status=no,menubar=no,scrollbars=yes,resizable=no");
+  ValPrtWdw.location.href = "PricedRMInvPrt.html";
+  ValPrtWdw.print();
 };
 const options = {
     // options-starting directory path, file extension
