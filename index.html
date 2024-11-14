@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="RMINV.css">
+        <script type="text/javascript" src="RMINV.js" defer></script>
+
+</head>
+
+    <body>
+    <div>   
+        <table class="table" id="lineItemsTable" title="Raw Materials Inventory">
+            <thead class="thead" id="thead" name="thead">
+                <tr> 
+                    <th class="th" id="th" name="th">Usage</th>
+                    <th class="th" id="th" name="th">ID</th>
+                    <th class="th" id="th" name="th">nomSize</th>
+                    <th class="th" id="th" name="th">Grade</th>
+                    <th class="th" id="th" name="th">fisWidth</th>
+                    <th class="th" id="th" name="th">fisDepth</th>
+                    <th class="th" id="th" name="th">fisLength</th>
+                    <th class="th" id="th" name="th">mmWidth</th>
+                    <th class="th" id="th" name="th">mmDepth</th>
+                    <th class="th" id="th" name="th">mmLength</th>
+                    <th class="th" id="th" name="th">Qty-Stk</th>
+                    <th class="th" id="th" name="th">Qty-Ord</th>
+                    <th class="th" id="th" name="th">$Each</th>
+                    <th class="th" id="th" name="th">File</th>
+
+                </tr>
+            </thead>
+            <tbody class="tbody" id="tbody" name="tbody">
+
+
+                <tr class="row" id="tr" name="tr">
+                    <td class="cell" id="td" name="td">Rf Wl Flr Pst Bm Brc</td>
+                    <td class="cell" id="td" name="td">123</td>
+                    <td class="cell" id="td" name="td">2x4</td>
+                    <td class="cell" id="td" name="td">SPFStud</td>
+                    <td class="cell" id="td" name="td">108</td>
+                    <td class="cell" id="td" name="td">308</td>
+                    <td class="cell" id="td" name="td">2400</td>
+                    <td class="cell" id="td" name="td">38</td>
+                    <td class="cell" id="td" name="td"></td>
+                    <td class="cell" id="td" name="td"></td>
+                    <td class="cell" id="td" name="td">1</td>
+                    <td class="cell" id="td" name="td">4</td>
+                    <td class="cell" id="td" name="td">1.79</td>
+                    <td class="cell" id="td" name="td">2x4SPFStud_2400.obj </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    
+    <div id="csvBtns">  
+        <button class="CrudBtns" id="OpenFile">Open Csv File</button>
+        <button class="CrudBtns" id="SaveAsCsv">Save as Csv</button>
+        <button class="CrudBtns" id="Calculator" onclick="loadCalculator()">Calculator</button>
+        <button class="CrudBtns" id="AddBtn">Add Line Item</button>
+        <button class="CrudBtns" id="PrintTable">Print Inventory</button>
+        <button class="CrudBtns" id="QPUpdate">Qty/Price Update</button>
+        <button class="CrudBtns" id="PrintValTable">Print Value</button>
+    </div>
+    
+    
+        <form class="form" method="dialog" id="inputform">
+            <div class="lastCard" id="lastCard">
+            <span><label for="usage">Usage</label>
+            <input type="text" id="usage" placeholder="Usage" tabindex="1">
+            </span>
+            <span><label for="nomSize">Nom Size</label>
+            <input type="text" id="nomSize" placeholder="nomSize" tabindex="3">
+            </span>
+            <span><label for="Grade">Grade</label>
+            <input type="text" id="Grade" placeholder="Grade" tabindex="4">
+            </span>
+            <label type="text" id="ID" title="ID Number"placeholder="rec" tabindex="-1"></label>
+            
+            <span><label for="fisWidth">Width</label>
+            <input type="text" id="fisWidth" placeholder="fisWidth" tabindex="5">
+            </span>
+            <span><label for="fisDepth">Depth</label>
+            <input type="text" id="fisDepth" placeholder="fisDepth" tabindex="6">
+            </span>
+            <span><label for="fisLength">Length</label>
+            <input type="text" id="fisLength" placeholder="fisLength" tabindex="7">
+            </span>
+            <br />
+            <span><label for="mmWidth">Width</label>
+            <input type="text" id="mmWidth" placeholder="mmWidth" tabindex="8">
+            </span>
+            <span><label for="mmDepth">Depth</label>
+            <input type="text" id="mmDepth" placeholder="mmDepth" tabindex="9">
+            </span>
+            <span><label for="mmLength">Length</label>
+            <input type="text" id="mmLength" placeholder="mmLength" tabindex="10">
+            </span>
+            <br />
+            <span>
+            <label for="QtyStk">Qty in Stock</label>
+            <input type="text" id="QtyStk" placeholder="Qty-Stk" tabindex="11">
+            </span>
+            <span>
+            <label for="QtyStk">Qty on Order</label>
+            <input type="text" id="QtyOrd" placeholder="Qty-Ord" tabindex="12">
+            </span>
+            <span>
+            <label for="price">Price Each($)</label>
+            <input type="text" id="price" placeholder="Price Each" tabindex="13">
+            </span>
+            <input type="text" id="file" placeholder="File" tabindex="14">
+            
+            
+            <button class="CrudBtns" id="cancelBtn"> Cancel </button>
+            <button class="CrudBtns" id="UpdateTable">Update Table</button>
+            <button class="CrudBtns" id="DelBtn">Delete Line Item</button>
+            <button class="CrudBtns" id="CloneBtn">Clone Line Item</button>
+            
+            </div>
+        </form>
+            <div class="card-container" id="card-container">
+            
+                <div class="UsageCard" id="UsageCard" name="UsageCard">
+                    <ol class="dropdown" name="usageList" id="usageList">
+                        <li><input type="checkbox" id="chkBox">Rf</li>
+                        <li><input type="checkbox" id="chkBox">Wl</li>
+                        <li><input type="checkbox" id="chkBox">Flr</li>
+                        <li><input type="checkbox" id="chkBox">Pst</li>
+                        <li><input type="checkbox" id="chkBox">Bm</li>
+                        <li><input type="checkbox" id="chkBox">Brc</li>
+                        <li><input type="checkbox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newUsage" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+                    <input type="text" id="usageCollector">
+                </div>
+                
+                <div class="NomSizeCard" id="NomSizeCard">
+            
+                    <ol class="dropdown" name="nomSizeList" id="nomSizeList">
+                        <li><input type="checkbox" name="chkBox" id="chkBox">2x4</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">2x6</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">2x8</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">2x10</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">4x4</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">4x6</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newNomSize" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+            
+                </div>
+                <div class="GradeCard" id="GradeCard">
+            
+                    <ol class="dropdown" name="GradeList" id="GradeList">
+                        <li><input type="checkbox" name="chkBox" id="chkBox">spf</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">syp</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">lvl</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">paraLam</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">zip</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">osb</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newGrade" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+            
+                </div>
+                <div class="fisWidthCard" id="fisWidthCard">
+                    <ol class="dropdown" name="fisWidthList" id="fisWidthList">
+                        <li><input type="checkbox" name="chkBox" id="chkBox">108</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">112</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">308</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">508</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">704</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">904</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newfisWidth" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+            
+                </div>
+                <div class="fisDepthCard" id="fisDepthCard">
+            
+                    <ol class="dropdown" name="fisDepthList" id="fisDepthList">
+                        <li><input type="checkbox" name="chkBox" id="chkBox">108</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">112</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">308</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">508</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">704</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">904</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newfisDepth" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+            
+                </div>
+                <div class="fisLengthCard" id="fisLengthCard">
+            
+                    <ol class="dropdown" name="fisLengthList" id="fisLengthList">
+                        <li><input type="checkbox" name="chkBox" id="chkBox">2400</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">4800</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">6000</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">7200</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">9600</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">9</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">10</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">12</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">14</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">16</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">18</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">20</li>
+                        <li><input type="checkbox" name="chkBox" id="chkBox">New</li>
+                    </ol>
+                    <input type="text" id="newfisLength" placeholder="New">
+                    <button class="okButton" id="okButton">Ok</button>
+            
+                </div>
+            </div>
+
+
+        <!--  "./index.html")  "https://mikeswayze.github.io/rpncalc/index.html"-->
+        
+        <span class="misc">
+            <div class="convertForm" id="convertForm" name="convertForm">
+                <input type="text" id="my_Convert"  name="my_Convert" placeholder="my_Convert" tabindex="-1"></input>
+                <input type="text" id="lastUnit" name="lastUnit" placeholder="lastUnit" tabindex="-1"></input>
+                <input type="number" id="UnitExp_" name="UnitExp_" value=1 placeholder="1" tabindex="-1"></input>
+                <input type="text" id="OutNumU" name="OutNumU" placeholder="OutNumU" tabindex="-1"></input>
+                <input type="number" id="DecFt" name="DecFt" value=0 placeholder="0" tabindex="-1"></input>
+                <input type="number" id="DecIn" name="DecIn" value=0 placeholder="0" tabindex="-1"></input>
+                <input type="number" id="DecSx" name="DecSx" value=0 placeholder="0" tabindex="-1"></input>
+                <input type="number" id="DecMeter" name="DecMeter" value=0 placeholder="0" tabindex="-1"></input>
+                <input type="number" id="Dec_mm" name="Dec_mm"  placeholder="Dec_mm" tabindex="-1"></input>
+            </div>
+            
+                <div id="div1" class="radio_button">
+                    <input type="radio" id="fis" name="fis" tabindex="-1" onclick="chk_units()" checked>
+                    <label for="fis">fis </label>
+                    <input type="radio" id="mm" name="fis" tabindex="-1" onclick="chk_units()">
+                    <label for="mm">mm</label>
+                    <input type="radio" id="units" name="fis" tabindex="-1" onclick="chk_units()">
+                    <label for="units">units</label>
+                </div>
+                  
+        <textarea tabindex="-1" name="csvText" id="csvText">"Usage","ID","NomSize","Grade","fisWidth","fisDepth","fisLength","mmWidth","mmDepth","mmLength","Qty-Stk","Qty-Ord","$Each","File"
+        "Wl","159","2x4x8ft","ACQ-PT","1in8sx","3in8sx","8ft","38.1","88.9","2438.4","","","",""
+        "Wl","160","2x4x10ft","ACQ-PT","1in8sx","3in8sx","10ft","38.1","88.9","3048","","","",""
+        "Wl","161","2x4x12ft","ACQ-PT","1in8sx","3in8sx","12ft","38.1","88.9","3657.6","","","",""
+        "Wl","162","2x4x14ft","ACQ-PT","1in8sx","3in8sx","14ft","38.1","88.9","4267.2","","","",""
+        "Wl","163","2x4x16ft","ACQ-PT","1in8sx","3in8sx","16ft","38.1","88.9","4876.8","","","",""
+        "Wl","164","2x6x8ft","ACQ-PT","1in8sx","5in8sx","8ft","38.1","139.7","2438.4","","","",""
+        "Wl","165","2x6x10ft","ACQ-PT","1in8sx","5in8sx","10ft","38.1","139.7","3048","","","",""
+        "Wl","166","2x6x12ft","ACQ-PT","1in8sx","5in8sx","12ft","38.1","139.7","3657.6","","","",""
+        "Wl","167","2x6x14ft","ACQ-PT","1in8sx","5in8sx","14ft","38.1","139.7","4267.2","","","",""
+        "Wl","168","2x6x16ft","ACQ-PT","1in8sx","5in8sx","16ft","38.1","139.7","4876.8","","","",""
+        "Wl","169","2x8x12ft","ACQ-PT","1in8sx","5in8sx","12ft","38.1","139.7","3657.6","","","",""
+        "Wl","170","2x8x14ft","ACQ-PT","1in8sx","5in8sx","14ft","38.1","139.7","4267.2","","","",""
+        "Wl","222","1/2x4x9","BlackAsphalt","8sx","4ft","9ft","12.7","1219.2","2743.2","","","",""
+        "Wl Bm","214","1/2x4x8","CDX","8sx","4ft","8ft","12.7","1219.2","2438.4","","","",""
+        "Wl Bm","218","1/2x4x8","Denseglass","8sx","4ft","8ft","12.7","1219.2","2438.4","","","",""
+        "Wl","219","1/2x4x9","Denseglass","8sx","4ft","9ft","12.7","1219.2","2743.2","","","",""
+        "Wl","220","5/8x4x8","Denseglass","10sx","4ft","8ft","15.875","1219.2","2438.4","","","",""
+        "Wl","221","5/8x4x9","Denseglass","10sx","4ft","9ft","15.875","1219.2","2743.2","","","",""
+        "Wl","225","3/16x4x9","EnergyBrace","3sx","4ft","9ft","4.7625","1219.2","2743.2","","","",""
+        "Wl","226","1/2x4x9","EnergyBrace","8sx","4ft","9ft","12.7","1219.2","2743.2","","","",""
+        "Wl","224","5/8x4x9","FC Ext.Sheathing","10sx","4ft","9ft","15.875","1219.2","2743.2","","","",""
+        "Wl","223","5/8x4x8","FCExt.Sheathing","10sx","4ft","8ft","15.875","1219.2","2438.4","","","",""
+        "Bm","171","1-3/4x9-1/4x22ft","LVL2.0e","1in12sx","9in4sx","22ft","44.45","234.95","6705.6","","","",""
+        "Bm","172","1-3/4x9-1/2x22ft","LVL2.0e","1in12sx","9in8sx","22ft","44.45","241.3","6705.6","","","",""
+        "Bm","173","1-3/4x11-7/8x22ft","LVL2.0e","1in12sx","11in14sx","22ft","44.45","301.625","6705.6","","","",""
+        "Bm","174","1-3/4x14x22ft","LVL2.0e","1in12sx","14in","22ft","44.45","355.6","6705.6","","","",""
+        "Bm","175","1-3/4x16x22ft","LVL2.0e","1in12sx","16in","22ft","44.45","406.4","6705.6","","","",""
+        "Bm","176","1-3/4x18x22ft","LVL2.0e","1in12sx","18in","22ft","44.45","457.2","6705.6","","","",""
+        "Bm","177","1-3/4x22x22ft","LVL2.0e","1in12sx","22in","22ft","44.45","558.8","6705.6","","","",""
+        "Bm","178","1-3/4x24x22ft","LVL2.0e","1in12sx","24in","22ft","44.45","609.6","6705.6","","","",""
+        "Wl Bm","215","7/16x4x8","OSB","7sx","4ft","8ft","11.1125","1219.2","2438.4","","","",""
+        "Wl Bm","216","7/16x4x9","OSB","7sx","4ft","9ft","11.1125","1219.2","2743.2","","","",""
+        "Wl Bm","217","7/16x4x10","OSB","7sx","4ft","10ft","11.1125","1219.2","3048","","","",""
+        "Bm Pst","204","3-1/2x3-1/2x22ft","P-Lam","3in8sx","3in8sx","22ft","88.9","88.9","6705.6","","","",""
+        "Bm Pst","206","3-1/2x5-1/2x22ft","P-Lam","3in8sx","5in8sx","22ft","88.9","139.7","6705.6","","","",""
+        "Bm Pst","211","3-1/2x16x22ft","P-Lam","3in8sx","16in","22ft","88.9","406.4","6705.6","","","",""
+        "Bm Pst","212","5-1/4x5-1//4x22ft","P-Lam","5in4sx","5in4sx","22ft","133.35","133.35","6705.6","","","",""
+        "Bm Pst","213","5-1/2x5-1/2x22ft","P-Lam","5in8sx","5in8sx","22ft","139.7","139.7","6705.6","","","",""
+        "Wl","123","2x4x2ft","SPF","1in8sx","3in8sx","2ft","38.1","88.9","609.6","1","4","1.79","2x4SPFStud_2400.obj"
+        "Wl","124","2x4x4ft","SPF","1in8sx","3in8sx","4ft","38.1","88.9","1219.2","1","4","1.79","2x4SPFStud_2400.obj"
+        "Wl","23","2x4x6ft","SPF","1in8sx","3in8sx","6ft","38.1","88.9","1828.8","1","4","1.79","2x4SPFStud_2400.obj"
+        "Wl Pst","12","2x4x8ft","SPF2orBTR","1in8sx","3in8sx","8ft","38.1","88.9","2438.4","1","4","1.79","2x4SPFStud_2400.obj"
+        "Wl","130","2x4x92-5/8","SPF2orBTR","1in8sx","3in8sx","7ft8in10sx","38.1","88.9","2352.675","","","",""
+        "Wl","131","2x4x94-1/8","SPF2orBTR","1in8sx","3in8sx","7ft10in2sx","38.1","88.9","2390.775","","","",""
+        "Wl","132","2x4x104-5/8","SPF2orBTR","1in8sx","3in8sx","8ft8in10sx","38.1","88.9","2657.475","","","",""
+        "Wl","133","2x4x116-5/8","SPF2orBTR","1in8sx","3in8sx","9ft8in10sx","38.1","88.9","2962.275","","","",""
+        "Wl","134","2x4x118-1/8","SPF2orBTR","1in8sx","3in8sx","9ft10in2sx","38.1","88.9","3000.375","","","",""
+        "Wl","135","2x4x10ft","SPF2orBTR","1in8sx","3in8sx","10ft","38.1","88.9","3048","","","",""
+        "Wl","136","2x4x12ft","SPF2orBTR","1in8sx","3in8sx","12ft","38.1","88.9","3657.6","","","",""
+        "Wl","137","2x4x14ft","SPF2orBTR","1in8sx","3in8sx","14ft","38.1","88.9","4267.2","","","",""
+        "Wl","138","2x4x16ft","SPF2orBTR","1in8sx","3in8sx","16ft","38.1","88.9","4876.8","","","",""
+        "Wl","139","2x4x18ft","SPF2orBTR","1in8sx","3in8sx","18ft","38.1","88.9","5486.4","","","",""
+        "Wl","140","2x4x20ft","SPF2orBTR","1in8sx","3in8sx","20ft","38.1","88.9","6096","","","",""
+        "Wl Bm","141","2x6x8ft","SPF2orBTR","1in8sx","5in8sx","8ft","38.1","139.7","2438.4","","","",""
+        "Wl","142","2x6x92-5/8","SPF2orBTR","1in8sx","5in8sx","7ft8in10sx","38.1","139.7","2352.675","","","",""
+        "Wl","143","2x6x94-1/8","SPF2orBTR","1in8sx","5in8sx","7ft10in2sx","38.1","139.7","2390.775","","","",""
+        "Wl","144","2x6x104-5/8","SPF2orBTR","1in8sx","5in8sx","8ft8in10sx","38.1","139.7","2657.475","","","",""
+        "Wl Bm","145","2x6x10ft","SPF2orBTR","1in8sx","5in8sx","10ft","38.1","139.7","3048","","","",""
+        "Wl Bm","146","2x6x12ft","SPF2orBTR","1in8sx","5in8sx","12ft","38.1","139.7","3657.6","","","",""
+        "Wl Bm","147","2x6x14ft","SPF2orBTR","1in8sx","5in8sx","14ft","38.1","139.7","4267.2","","","",""
+        "Wl Bm","148","2x6x16ft","SPF2orBTR","1in8sx","5in8sx","16ft","38.1","139.7","4876.8","","","",""
+        "Wl Bm","149","2x6x18ft","SPF2orBTR","1in8sx","5in8sx","18ft","38.1","139.7","5486.4","","","",""
+        "Wl Bm","150","2x6x20ft","SPF2orBTR","1in8sx","5in8sx","20ft","38.1","139.7","6096","","","",""
+        "Wl Bm","151","2x6x22ft","SPF2orBTR","1in8sx","5in8sx","22ft","38.1","139.7","6705.6","","","",""
+        "Wl Bm","152","2x8x14ft","SPF2orBTR","1in8sx","7in4sx","14ft","38.1","184.15","4267.2","","","",""
+        "Wl Bm","153","2x8x20ft","SPF2orBTR","1in8sx","7in4sx","20ft","38.1","184.15","6096","","","",""
+        "Wl Bm","154","2x10x14ft","SPF2orBTR","1in8sx","9in4sx","14ft","38.1","234.95","4267.2","","","",""
+        "Wl Bm","155","2x10x16ft","SPF2orBTR","1in8sx","9in4sx","16ft","38.1","234.95","4876.8","","","",""
+        "Wl Bm","156","2x12x14ft","SPF2orBTR","1in8sx","11in4sx","14ft","38.1","285.75","4267.2","","","",""
+        "Wl Bm","157","2x12x16ft","SPF2orBTR","1in8sx","11in4sx","16ft","38.1","285.75","4876.8","","","",""
+        "Wl Bm","158","2x12x18ft","SPF2orBTR","1in8sx","11in4sx","18ft","38.1","285.75","5486.4","","","",""
+        "Wl","125","2x4x92-5/8","SPFStud","1in8sx","3in8sx","7ft8in10sx","38.1","88.9","2352.675","1","1","1.79",""
+        "Wl","126","2x4x94-1/8","SPFStud","1in8sx","3in8sx","7ft10in2sx","38.1","88.9","2390.775","1","1","1.79",""
+        "Wl","127","2x4x104-5/8","SPFStud","1in8sx","3in8sx","8ft8in10sx","38.1","88.9","2657.475","1","1","2.03",""
+        "Wl","128","2x4x116-5/8","SPFStud","1in8sx","3in8sx","9ft8in10sx","38.1","88.9","2962.275","1","1","2.03",""
+        "Wl","129","2x4x118-1/8","SPFStud","1in8sx","3in8sx","9ft10in2sx","38.1","88.9","3000.375","","","",""
+        "Rf","179","2x4x2ft","SYP","1in8sx","3in8sx","2ft","38.1","88.9","609.6","1","4","1.79","2x4SPFStud_2400.obj"
+        "Rf","180","2x4x4ft","SYP","1in8sx","3in8sx","4ft","38.1","88.9","1219.2","1","4","1.79","2x4SPFStud_2400.obj"
+        "Rf","181","2x4x6ft","SYP","1in8sx","3in8sx","6ft","38.1","88.9","1828.8","1","4","1.79","2x4SPFStud_2400.obj"
+        "Rf","182","2x4x8ft","SYP","1in8sx","3in8sx","8ft","38.1","88.9","2438.4","1","4","1.79","2x4SPFStud_2400.obj"
+        "Rf","183","2x4x10ft","SYP","1in8sx","3in8sx","10ft","38.1","88.9","3048","","","",""
+        "Rf","184","2x4x12ft","SYP","1in8sx","3in8sx","12ft","38.1","88.9","3657.6","","","",""
+        "Rf","185","2x4x14ft","SYP","1in8sx","3in8sx","14ft","38.1","88.9","4267.2","","","",""
+        "Rf","186","2x4x16ft","SYP","1in8sx","3in8sx","16ft","38.1","88.9","4876.8","","","",""
+        "Rf","187","2x4x18ft","SYP","1in8sx","3in8sx","18ft","38.1","88.9","5486.4","","","",""
+        "Rf","188","2x4x20ft","SYP","1in8sx","3in8sx","20ft","38.1","88.9","6096","","","",""
+        "Rf","189","2x6x8ft","SYP","1in8sx","5in8sx","8ft","38.1","139.7","2438.4","","","",""
+        "Rf","190","2x6x10ft","SYP","1in8sx","5in8sx","10ft","38.1","139.7","3048","","","",""
+        "Rf","191","2x6x12ft","SYP","1in8sx","5in8sx","12ft","38.1","139.7","3657.6","","","",""
+        "Rf","192","2x6x14ft","SYP","1in8sx","5in8sx","14ft","38.1","139.7","4267.2","","","",""
+        "Rf","193","2x6x16ft","SYP","1in8sx","5in8sx","16ft","38.1","139.7","4876.8","","","",""
+        "Rf","194","2x6x18ft","SYP","1in8sx","5in8sx","18ft","38.1","139.7","5486.4","","","",""
+        "Rf","195","2x6x20ft","SYP","1in8sx","5in8sx","20ft","38.1","139.7","6096","","","",""
+        "Rf","196","2x6x22ft","SYP","1in8sx","5in8sx","22ft","38.1","139.7","6705.6","","","",""
+        "Rf","197","2x8x14ft","SYP","1in8sx","7in4sx","14ft","38.1","184.15","4267.2","","","",""
+        "Rf","198","2x8x20ft","SYP","1in8sx","7in4sx","20ft","38.1","184.15","6096","","","",""
+        "Rf","199","2x10x14ft","SYP","1in8sx","9in4sx","14ft","38.1","234.95","4267.2","","","",""
+        "Rf","200","2x10x16ft","SYP","1in8sx","9in4sx","16ft","38.1","234.95","4876.8","","","",""
+        "Rf","201","2x12x14ft","SYP","1in8sx","11in4sx","14ft","38.1","285.75","4267.2","","","",""
+        "Rf","202","2x12x16ft","SYP","1in8sx","11in4sx","16ft","38.1","285.75","4876.8","","","",""
+        "Rf","203","2x12x18ft","SYP","1in8sx","11in4sx","18ft","38.1","285.75","5486.4","","","",""
+        "Bm Pst","205","3-1/2x5-1/4x22ft","V-Lam","3in8sx","5in4sx","22ft","88.9","133.35","6705.6","","","",""
+        "Bm Pst","207","3-1/2x7x22ft","V-Lam","3in8sx","7in","22ft","88.9","177.8","6705.6","","","",""
+        "Bm Pst","208","3-1/2x9-1/2x22ft","V-Lam","3in8sx","9in8sx","22ft","88.9","241.3","6705.6","","","",""
+        "Bm Pst","209","3-1/2x11-7/8x22ft","V-Lam","3in8sx","11in14sx","22ft","88.9","301.625","6705.6","","","",""
+        "Bm Pst","210","3-1/2x14x22ft","V-Lam","3in8sx","14in","22ft","88.9","355.6","6705.6","","","",""
+        "Wl Brc","227","WB12","Wall Strap Brace","1sx","8sx","12ft","1.5875","12.7","3657.6","","","",""
+        "Wl Brc","228","WB106c","Wall Strap Brace","1sx","8sx","106in","1.5875","12.7","2692.4","","","",""
+        "Wl Brc","229","WB126c","Wall Strap Brace","1sx","8sx","126in","1.5875","12.7","3200.4","","","",""
+        "Wl Brc","230","WB143c","Wall Strap Brace","1sx","8sx","143in","1.5875","12.7","3632.2","","","",""</textarea>
+        </span>
+        <form class="form" method="dialog" id="qpUpdateForm">
+            <span>
+            <input type="text" id="QPId" placeholder="ID" tabindex="1">
+            <input type="text" id="qpuDescription" placeholder="Description" tabindex="-1">
+            </span>
+            <br id="qpuNumbers">
+            <input type="text" id="qpuStkQty" placeholder="Qty in Stock" tabindex="2">
+            <input type="text" id="qpuOrdQty" placeholder="Qty on Order" tabindex="3">
+            <input type="text" id="qpuPrice" placeholder="Current Price" tabindex="4">
+            <br>
+            <span>
+            <button class="CrudBtns" id="QPUpdateTable" tabindex="5">Update qty/price</button>
+            <button class="CrudBtns" id="QPNext" tabindex="6">Next ID</button>
+            <button class="CrudBtns" id="QPExit" tabindex="7">Exit Update</button>
+            <textarea id="LastQPId" tabindex="-1"></textarea>
+            </span>
+        </form>
+        
+    </body>
+
+
+</html>
