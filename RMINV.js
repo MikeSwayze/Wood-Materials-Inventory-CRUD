@@ -190,7 +190,7 @@ DelBtn.addEventListener("click", (ev) => {
     tableData.push(row);
   };
   tableArr = tableData;
-  localStorage.setItem("rminvtableArray", JSON.stringify(tableArr));
+  localStorage.setItem("rminvTableArray", JSON.stringify(tableArr));
   
   inputForm.reset();
   RMInvID.innerText = "";
@@ -310,7 +310,7 @@ clrPickLists();
     tableData.push(row);
   };
   tableArr = tableData;
-  localStorage.setItem("rminvtableArray", JSON.stringify(tableArr));
+  localStorage.setItem("rminvTableArray", JSON.stringify(tableArr));
   //alert("tableArray");
 
 });
@@ -512,7 +512,7 @@ QPId.addEventListener("input", (event) => {
   rminvIdLookup();
 });
 QPUpdateTableBtn.addEventListener("click", (ev) => {
-  let rminvtableArray = JSON.parse(localStorage.getItem("rminvtableArray"));
+  let rminvtableArray = JSON.parse(localStorage.getItem("rminvTableArray"));
   tableArr=rminvtableArray;
   hdrArray=tableArr.shift(0);
   let QPIdChk = '"' + QPId.value + '"';  
@@ -531,7 +531,7 @@ QPUpdateTableBtn.addEventListener("click", (ev) => {
     NewtableArr.unshift("");
     NewtableArr[0] = hdrArray;
     localStorage.setItem("QPLastId", JSON.stringify(LastQPId.value));
-    localStorage.setItem("rminvtableArray", JSON.stringify(NewtableArr));
+    localStorage.setItem("rminvTableArray", JSON.stringify(NewtableArr));
     qpUpdateForm.reset(); 
     csv2HtmlTable();
     pickLists(); 
@@ -544,7 +544,7 @@ QPNextBtn.addEventListener("click", (ev) => {
     LastQPId.value = JSON.parse(localStorage.getItem("QPLastId"));
   //console.log(LastQPId.value);
     let QPIdNxt = Number(LastQPId.value.replace(/\"/g,"")) + 1;
-    let rminvtableArray = JSON.parse(localStorage.getItem("rminvtableArray"));
+    let rminvtableArray = JSON.parse(localStorage.getItem("rminvTableArray"));
   tableArr=rminvtableArray;
   hdrArray=tableArr.shift(0);
   let QPIdChk = '"' + QPIdNxt + '"';  
@@ -1377,7 +1377,7 @@ let fisLengthAcc = "";
 multiChk="";
 };
 async function tableRowSort() { 
-      let rminvtableArray = JSON.parse(localStorage.getItem("rminvtableArray"));
+      let rminvtableArray = JSON.parse(localStorage.getItem("rminvTableArray"));
     tableArr=rminvtableArray;
   hdrArray=tableArr.shift(0);
   // table Row Sort 
@@ -1401,13 +1401,13 @@ async function tableRowSort() {
 };
 async function tablePrint() {
   const PrtWdw=window.open("RMInvPrt.html","_blank");
-  PrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvtableArray"))),"rminvtableArray");
+  PrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
   //await  PrtWdw.print(PrtWdw.document);
   //PrtWdw.close();
 };//"toolbar=yes, location=yes, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400"
 function ValTablePrint() {
   const ValPrtWdw=window.open("PricedRMInvPrt.html","_blank");
-  ValPrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvtableArray"))),"rminvtableArray");
+  ValPrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
   //ValPrtWdw.print();
 };
 const options = {
@@ -1435,7 +1435,7 @@ async function openFile() {
     tableData.push(row);
   };
   tableArr = tableData;
-  localStorage.setItem("rminvtableArray", JSON.stringify(tableArr));
+  localStorage.setItem("rminvTableArray", JSON.stringify(tableArr));
   //alert("tableArray");  
   csv2HtmlTable();
 };
@@ -1447,7 +1447,7 @@ function csv2HtmlTable() {  //headers,rows
     tRows.item(0).removeChild(tRows.item(0).lastChild);
   };
   //fill table header
-  tableArr= JSON.parse(localStorage.getItem("rminvtableArray"));
+  tableArr= JSON.parse(localStorage.getItem("rminvTableArray"));
   hdrArray = tableArr.shift(0);
   //console.log(hdrArray);
   tableRowSort();
@@ -1500,7 +1500,7 @@ async function SaveAsCsv() {
     tableData.push(row);
   };
   tableArr = tableData;
-  localStorage.setItem("rminvtableArray", JSON.stringify(tableArr));
+  localStorage.setItem("rminvTableArray", JSON.stringify(tableArr));
   //alert("tableArray");
 
   if (fileHandle) {
@@ -1526,7 +1526,7 @@ function loadCalculator() {
 // </div>
 function rminvIdLookup(){ 
   let IDBool = false;
-  let rminvtableArray = JSON.parse(localStorage.getItem("rminvtableArray"));
+  let rminvtableArray = JSON.parse(localStorage.getItem("rminvTableArray"));
   tableArr=rminvtableArray;
   hdrArray=tableArr.shift(0);
   let QPIdChk = '"' + QPId.value + '"';
@@ -2055,10 +2055,10 @@ function OutNum(s) {
   }
 }
 document.addEventListener("DOMContentLoaded",(event) => {
-  if(localStorage.getItem("rminvtableArray")) {
-    let rminvtableArray = JSON.parse(localStorage.getItem("rminvtableArray"));
+  if(localStorage.getItem("rminvTableArray")) {
+    let rminvtableArray = JSON.parse(localStorage.getItem("rminvTableArray"));
     tableArr=rminvtableArray;
-     localStorage.removeItem("rminvtableArray");
+     localStorage.removeItem("rminvTableArray");
   }else {
   let text = csvText.innerText;
   text=text.trim();
@@ -2071,7 +2071,7 @@ document.addEventListener("DOMContentLoaded",(event) => {
   };
   tableArr = tableData;
   };   
-  localStorage.setItem("rminvtableArray", JSON.stringify(tableArr));
+  localStorage.setItem("rminvTableArray", JSON.stringify(tableArr));
   //alert("tableArray");
   csv2HtmlTable();
 });
