@@ -79,3 +79,6 @@
     //};
     tbody.appendChild(row);
   };
+  document.addEventListener("DOMContentLoaded",(eval) => {
+  window.print();
+  });

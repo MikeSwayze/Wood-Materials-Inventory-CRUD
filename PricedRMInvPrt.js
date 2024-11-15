@@ -110,3 +110,6 @@
   OnOrder.value=Number(Math.round(Number(OnOrder.value)*100)/100).toFixed(2);
   Onhand.value="$"+Onhand.value;
   OnOrder.value="$"+OnOrder.value;
+    document.addEventListener("DOMContentLoaded",(eval) => {
+  window.print();
+  });
