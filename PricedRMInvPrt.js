@@ -18,7 +18,7 @@
 //     tRows.item(0).removeChild(tRows.item(0).lastChild);
 //   };
   //fill table header
-  tableArr= JSON.parse(localStorage.getItem("rminvTableArray"));
+  tableArr= JSON.parse(window.parent.localStorage.getItem("rminvTableArray"));
   hdrArray = tableArr.shift(0);
 //   for (const tHdr of hdrArray) {
 //     const th = document.createElement("th");

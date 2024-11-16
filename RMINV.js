@@ -1401,13 +1401,13 @@ async function tableRowSort() {
 };
 async function tablePrint() {
   const PrtWdw=window.open("RMInvPrt.html","_blank");
-  PrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
+  //PrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
   //await  PrtWdw.print(PrtWdw.document);
   //PrtWdw.close();
 };//"toolbar=yes, location=yes, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400"
 function ValTablePrint() {
   const ValPrtWdw=window.open("PricedRMInvPrt.html","_blank");
-  ValPrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
+  //ValPrtWdw.localStorage.setItem(JSON.stringify(JSON.parse(window.localStorage.getItem("rminvTableArray"))),"rminvTableArray");
   //ValPrtWdw.print();
 };
 const options = {
